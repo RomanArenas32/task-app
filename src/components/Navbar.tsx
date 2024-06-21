@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
-
-export const Navbar = () => {
+ const Navbar:React.FC = () => {
   return (
     <div className="navbar-container">
       <h1>Tasker</h1>
@@ -14,3 +13,5 @@ export const Navbar = () => {
     </div>
   )
 }
+
+export default Navbar;

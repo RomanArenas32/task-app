@@ -1,8 +1,10 @@
 
-import { AppRoutes } from "./routes";
-import { Footer, Navbar } from "./components";
+import  AppRoutes  from "./routes";
+import  Footer  from "./components/Footer";
+import  Navbar  from "./components/Navbar";
 
-export const App = () => {
+
+const App:React.FC = () => {
   return (
     <div className="App">
       <Navbar />
@@ -11,3 +13,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;
