@@ -1,0 +1,30 @@
+.navbar-container {
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: xx-large;
+  
+    nav {
+      font-size: medium;
+  
+      ul {
+        padding-top: 1rem;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+  
+        li {
+          cursor: pointer;
+  
+          &:hover {
+            color: yellow;
+          }
+        }
+      }
+    }
+  }
+  
