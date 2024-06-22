@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Input, Button, useForm, useToast } from "@chakra-ui/react";
+import { Box, Input, Button } from "@chakra-ui/react";
+import { useTasks } from "../hooks/useTasks";
 
 interface Task {
   id: string;
@@ -8,51 +9,45 @@ interface Task {
 }
 
 export const TaskForm: React.FC = () => {
-  const [task, setTask] = useState<Task>({ title: "" });
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm();
-  const toast = useToast();
+  const { addTask, tasks } = useTasks();
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  console.log(tasks);
+  const generateUniqueId = (): string => {
+    return `${new Date().getTime()}-${Math.random().toString(36).substring(2, 9)}`;
+  };
+
+  const [task, setTask] = useState<Task>({
+    id: "",
+    description: "",
+    completed: false,
+  });
+
+  const handleAddTask = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (!task.title) {
-      toast({
-        title: "Error",
-        description: "Debes ingresar un título para la tarea.",
-        status: "error",
-        duration: 3000,
-      });
-      return;
+    if (task.description.trim() == "") {
+      return alert("Debes agregar la desc");
     }
-
-    // Aquí puedes agregar la lógica para enviar la tarea al servidor o guardarla en el almacenamiento local
-
-    setTask({ title: "" });
-    toast({
-      title: "Éxito",
-      description: "Tarea agregada correctamente.",
-      status: "success",
-      duration: 3000,
-    });
+    if (task.description.length <= 3) {
+      return alert("La tarea debe tener mas de 3 caracteres");
+    }
+    addTask(task);
   };
 
   return (
-    <Box as="form" onSubmit={handleSubmit}>
+    <Box as="form" onSubmit={handleAddTask}>
       <Input
+        color="white"
         type="text"
         placeholder="Descripcion de la tarea"
-        {...register("title", {
-          required: true,
-          minLength: 3,
-        })}
-        value={task.title}
-        onChange={(e) => setTask({ ...task, title: e.target.value })}
-        isInvalid={errors.title}
-        error={errors.title?.message}
+        value={task.description}
+        onChange={(e) =>
+          setTask({
+            ...task,
+            description: e.target.value,
+            id: generateUniqueId(),
+          })
+        }
       />
       <Button type="submit" colorScheme="blue" mt={4}>
         Agregar tarea

@@ -10,3 +10,7 @@ $color4: #E3FEF7;
 //components
 @import './components/navbar';
 @import './components/footer';
+@import './todo/components/penddingTask';
+@import './todo/todoTask';
+@import './todo/components/taskList';
+@import './todo/components/taskItem';
