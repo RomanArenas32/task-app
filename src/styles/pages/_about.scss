@@ -1,8 +1,11 @@
 .about {
   width: 100vw;
-  height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 1rem;
+  align-items: center;
+
   .about_seccion {
     display: flex;
     flex-direction: column;
