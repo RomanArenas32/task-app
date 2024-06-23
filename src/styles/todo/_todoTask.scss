@@ -1,0 +1,9 @@
+.todoTask {
+  width: 100vw;
+
+  .todoTask_results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import { Guides, Task, About } from "../pages";
+import { Guides, About } from "../pages";
+import { TodoTask } from "../todo";
 
-
-export const AppRoutes = () => {
+const AppRoutes:React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Task />} />
+      <Route path="/" element={<TodoTask />} />
       <Route path="/guides" element={<Guides />} />
       <Route path="/about" element={<About />} />
-      <Route path="/*" element={<Task />} />
+      <Route path="/*" element={<TodoTask />} />
     </Routes>
   );
 };
+
+export default AppRoutes;
