@@ -25,10 +25,10 @@ export const TaskForm: React.FC = () => {
     e.preventDefault();
 
     if (task.description.trim() == "") {
-      return alert("Debes agregar la desc");
+      return alert("You must add the description");
     }
     if (task.description.length <= 3) {
-      return alert("La tarea debe tener mas de 3 caracteres");
+      return alert("The task must be longer than 3 characters");
     }
     addTask(task);
   };
@@ -38,7 +38,7 @@ export const TaskForm: React.FC = () => {
       <Input
         color="white"
         type="text"
-        placeholder="Descripcion de la tarea"
+        placeholder="Task description"
         value={task.description}
         onChange={(e) =>
           setTask({
@@ -49,7 +49,7 @@ export const TaskForm: React.FC = () => {
         }
       />
       <Button type="submit" colorScheme="blue" mt={4}>
-        Agregar tarea
+        Add task
       </Button>
     </Box>
   );
