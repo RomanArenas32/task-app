@@ -1,4 +1,4 @@
-import { extendTheme } from '@chakra-ui/react';
+import { Heading, extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
   styles: {
@@ -8,7 +8,7 @@ const theme = extendTheme({
         padding: 0,
         boxSizing: 'border-box',
         fontFamily: 'sans-serif',
-        background: '#003C43'
+        background: '#003C43',
       },
     },
   },
