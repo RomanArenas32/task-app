@@ -4,7 +4,6 @@ import {
   IconButton,
   Input,
   Modal,
-  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
@@ -29,12 +28,12 @@ export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
     e.preventDefault();
 
     if (newDescription.trim() == "") {
-      return alert("Debes agregar la descripcion");
+      return alert("You must add the description");
     }
     if (newDescription.length <= 3) {
-      return alert("La tarea debe tener mas de 3 caracteres");
+      return alert("The task must be longer than 3 characters");
     }
-    await editTask(newDescription, task.id)
+    editTask(newDescription, task.id)
     onClose()
   };
  
@@ -44,7 +43,7 @@ export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
     <>
       <IconButton
         color="yellow.700"
-        aria-label="Search database"
+        aria-label="Edit Button"
         icon={<EditIcon />}
         onClick={onOpen}
       />
@@ -59,7 +58,7 @@ export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
           width="90%"
             color="black"
             type="text"
-            placeholder="Descripcion de la tarea"
+            placeholder="Task Description"
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
           />

@@ -13,7 +13,7 @@ interface DataTime {
   temp_min?: number;
 }
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = () => {
   const [latLon, setLatLong] = useState<[number, number]>([0, 0]);
   const [openWeaterData, setOpenWeaterData] = useState<DataTime>();
 
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="navbar-container">
+    <div className="navbar-container" >
       <div className="navbar-container_time">
         <h1>Tasker</h1>
         <div className="navbar-container_time-weater">
@@ -77,4 +77,3 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
