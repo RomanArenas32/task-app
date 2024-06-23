@@ -11,7 +11,6 @@ interface Task {
 export const TaskForm: React.FC = () => {
   const { addTask, tasks } = useTasks();
 
-  console.log(tasks);
   const generateUniqueId = (): string => {
     return `${new Date().getTime()}-${Math.random().toString(36).substring(2, 9)}`;
   };

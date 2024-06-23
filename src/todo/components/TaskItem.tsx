@@ -1,14 +1,15 @@
 import { Task } from "../interfaces/interfaces";
 import { useTasks } from "../hooks/useTasks";
 import { IconButton } from "@chakra-ui/react";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { EditTask } from "./EditTask";
 
 interface props {
   task: Task;
 }
 
 export const TaskItem = ({ task }: props) => {
-  const { toggleTask, removeTask } = useTasks();
+  const { removeTask } = useTasks();
 
   return (
     <div className="taskItem_task">
@@ -17,18 +18,13 @@ export const TaskItem = ({ task }: props) => {
         <p>{task.description}</p>
       </div>
       <IconButton
-        color="yellow.700"
-        aria-label="Search database"
-        icon={<EditIcon />}
-        onClick={() => toggleTask(task.id)}
-      />
-      <IconButton
         m={1}
         color="red.700"
         aria-label="Search database"
         icon={<DeleteIcon />}
         onClick={() => removeTask(task.id)}
       />
+      <EditTask task={task}/>
     </div>
   );
 };
