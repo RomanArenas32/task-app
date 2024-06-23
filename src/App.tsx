@@ -1,14 +1,14 @@
 
 import  AppRoutes  from "./routes";
-import  Footer  from "./components/Footer";
-import  Navbar  from "./components/Navbar";
+import  {Footer, Navbar}  from "./components";
+
 
 if (!navigator.geolocation) {
   alert("Recommended: Enable your geolocation for a better experience");
   throw new Error("Recommended: Enable your geolocation for a better experience")
 }
 
-const App:React.FC = () => {
+export const App:React.FC = () => {
   return (
     <div className="App">
       <Navbar />
@@ -17,5 +17,3 @@ const App:React.FC = () => {
     </div>
   );
 };
-
-export default App;
