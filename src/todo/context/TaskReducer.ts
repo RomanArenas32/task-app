@@ -4,7 +4,7 @@ type TaskAction =
   | { type: "addTask"; payload: Task }
   | { type: "toggleTask"; payload: { id: string } }
   | { type: "removeTask"; payload: { id: string } }
-
+  | { type: "editTask"; payload: { description: string, id: string } };
 
 export const taskReducer = (
   state: TaskState,
@@ -26,6 +26,15 @@ export const taskReducer = (
           }
           return task;
         }),
+      };
+    case "editTask":
+      return {
+        ...state,
+        tasks: state.tasks.map((task) =>
+          task.id === action.payload.id
+            ? { ...task, description: action.payload.description }
+            : task
+        ),
       };
     case "removeTask":
       return {

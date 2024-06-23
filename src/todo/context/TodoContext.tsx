@@ -6,6 +6,7 @@ export type TaskContextProps = {
     toggleTask: (id: string) => void;
     addTask: (task: Task) => void;
     removeTask: (id: string) => void;
+    editTask: (description: string, id: string) => void;
 }
 
 export const TaskContext = createContext<TaskContextProps>({} as TaskContextProps );

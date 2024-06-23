@@ -5,7 +5,9 @@ $color3: #77B0AA;
 $color4: #E3FEF7;
 
 
-//global font
+//pages
+@import './pages/about.scss';
+
 
 //components
 @import './components/navbar';

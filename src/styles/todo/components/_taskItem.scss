@@ -50,5 +50,21 @@
     &:hover .taskItem_task-content {
       transform: translate(-50%, -50%);
     }
+    .taskItem_task-content_completed{
+      text-transform: uppercase;
+      background-color: red;
+      padding: 0.5rem;
+      color: white;
+      font-weight: bold;
+    }
+    .taskItem_task-content_check{
+      padding: 0.5rem;
+    }
+    .taskItem_task-content_buttons{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   

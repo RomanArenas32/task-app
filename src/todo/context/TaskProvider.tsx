@@ -28,13 +28,18 @@ export const TaskProvider = ({ children }: props) => {
   const removeTask = (id: string) => {
     dispatch({ type: "removeTask", payload:  { id } }); 
   };
+
+  const editTask = (description: string, id: string)=>{
+    dispatch({type: "editTask", payload: {description, id} })
+  }
   return (
     <TaskContext.Provider
       value={{
         taskState,
         toggleTask,
         addTask,
-        removeTask
+        removeTask,
+        editTask
       }}
     >
       {children}

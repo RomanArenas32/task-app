@@ -2,6 +2,7 @@ import { EditIcon } from "@chakra-ui/icons";
 import {
   Button,
   IconButton,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,19 +15,31 @@ import {
 } from "@chakra-ui/react";
 import { useTasks } from "../hooks/useTasks";
 import { Task } from "../interfaces/interfaces";
+import { useState } from "react";
 interface EditTaskProps {
   task: Task;
 }
 
 export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [newDescription, setNewDescription] = useState<string>("");
+   const { editTask } = useTasks();
 
-  const { toggleTask } = useTasks();
+  const handleEditTask =  async(e: React.SyntheticEvent) => {
+    e.preventDefault();
 
-  const changeTask = (task: Task): void => {
-    console.log(task);
+    if (newDescription.trim() == "") {
+      return alert("Debes agregar la descripcion");
+    }
+    if (newDescription.length <= 3) {
+      return alert("La tarea debe tener mas de 3 caracteres");
+    }
+    await editTask(newDescription, task.id)
+    onClose()
   };
+ 
 
+ 
   return (
     <>
       <IconButton
@@ -41,13 +54,21 @@ export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
         <ModalContent>
           <ModalHeader>Edit you task</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Lorem ipsum dolor sit amet.</ModalBody>
+          <Input
+          m={2}
+          width="90%"
+            color="black"
+            type="text"
+            placeholder="Descripcion de la tarea"
+            value={newDescription}
+            onChange={(e) => setNewDescription(e.target.value)}
+          />
 
           <ModalFooter flex={2} justifyContent="space-between" flexDir="row">
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button colorScheme="blue" mr={3} onClick={() => changeTask(task)}>
+            <Button colorScheme="blue" mr={3} onClick={handleEditTask}>
               save changes
             </Button>
           </ModalFooter>
