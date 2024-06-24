@@ -21,13 +21,13 @@ $color4: #E3FEF7;
 @import './pages/about';
 @import './pages/guide';
 @import './pages/components/comments';
+@import './pages/home';
 
 
 //layout
 @import './layout/navbar';
 @import './layout/footer';
 @import './layout/components/time';
-@import './layout/home.scss';
 @import './layout/components/homeTitle';
 
 //todo

@@ -29,9 +29,10 @@ export const TaskProvider = ({ children }: props) => {
     dispatch({ type: "removeTask", payload:  { id } }); 
   };
 
-  const editTask = (description: string, id: string)=>{
-    dispatch({type: "editTask", payload: {description, id} })
-  }
+  const editTask = (editedTask: Task) => {
+    dispatch({ type: "editTask", payload: editedTask });
+  };
+  
   return (
     <TaskContext.Provider
       value={{

@@ -4,7 +4,13 @@ type TaskAction =
   | { type: "addTask"; payload: Task }
   | { type: "toggleTask"; payload: { id: string } }
   | { type: "removeTask"; payload: { id: string } }
-  | { type: "editTask"; payload: { description: string, id: string } };
+  | { type: "editTask"; payload: { 
+    id: string,
+    title?: string,
+    description?: string,
+    expiration?: string,
+    priority?: string
+  } };
 
 export const taskReducer = (
   state: TaskState,
@@ -32,7 +38,12 @@ export const taskReducer = (
         ...state,
         tasks: state.tasks.map((task) =>
           task.id === action.payload.id
-            ? { ...task, description: action.payload.description }
+            ? { ...task, 
+              title: action.payload.title ?? task.title,
+              description: action.payload.description ?? task.description,
+              expiration: action.payload.expiration ?? task.expiration,
+              priority: action.payload.priority ?? task.priority,
+             }
             : task
         ),
       };

@@ -1,5 +1,12 @@
-.todoTask_results {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.todoTask {
+  background-color: $color3;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+
+  .todoTask_results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: -4rem;
+  }
 }

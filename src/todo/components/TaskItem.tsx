@@ -9,6 +9,15 @@ export interface Props {
 }
 
 export const TaskItem: React.FC<Props> = ({ task }) => {
+
+  const priorityStyles: { [key: string]: React.CSSProperties } = {
+    high: { background: "red", color: "white" },
+    medium: { background: "orange", color: "white" },
+    low: { background: "green", color: "white" },
+  };
+  const defaultStyle: React.CSSProperties = { background: "black", color: "white" };
+  const style = priorityStyles[task.priority] || defaultStyle;
+
   const { toggleTask } = useTasks();
   const handleChangeCompleted = () => {
     toggleTask(task.id);
@@ -23,7 +32,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
           <span>{task.title}</span>
         )}
         <p>{task.description}</p>
-        <p>{task.priority}</p>
+        <p style={style}>{task.priority} Priority.!</p>
         <p>Expired: {task.expiration}</p>
       </div>
       <div className="taskItem_task-content_buttons">

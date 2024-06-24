@@ -18,7 +18,7 @@
             min-height: 75px;
         }
 
-        @include movil{
+        @include tablet{
             flex-direction: column;
         }
     }

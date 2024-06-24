@@ -17,12 +17,14 @@ import {
 import { useState } from "react";
 import { Task } from "../../interfaces/interfaces";
 import { EditIcon } from "@chakra-ui/icons";
+import { useTasks } from "../../hooks/useTasks";
 
 interface EditTaskProps {
   task: Task;
 }
 
 export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
+  const { editTask } = useTasks();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [taskEdit, setTaskEdit] = useState<Task>({
     id: task.id,
@@ -35,13 +37,27 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
 
   const handleEditTask = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
-    console.log(taskEdit)
+    if (taskEdit.title.trim() === "") {
+      return alert("Title cannot be empty");
+    }
+    if (taskEdit.description.trim() === "") {
+      return alert("Description cannot be empty");
+    }
+    if (taskEdit.expiration.trim() === "") {
+      return alert("Expiration date cannot be empty");
+    }
+    if (taskEdit.priority.trim() === "") {
+      return alert("Priority must be selected");
+    }
+    editTask(taskEdit, task.id);
+    setTimeout(() => {
+      onClose();
+    }, 300);
   };
 
   return (
     <>
-    <IconButton
+      <IconButton
         m={1}
         color="yellow.700"
         aria-label="Edit task"
@@ -51,7 +67,9 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent className="addTaskForm">
-          <ModalHeader className="addTaskForm_header">Edit You task</ModalHeader>
+          <ModalHeader className="addTaskForm_header">
+            Edit You task
+          </ModalHeader>
           <ModalCloseButton color="white" />
           <ModalBody pb={6} className="addTaskForm_modal">
             <FormControl mt={2}>
@@ -60,7 +78,7 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
                 placeholder="Title of task"
                 value={taskEdit.title}
                 onChange={(e) =>
-                    setTaskEdit((prevTask) => ({
+                  setTaskEdit((prevTask) => ({
                     ...prevTask,
                     title: e.target.value,
                   }))
@@ -74,7 +92,7 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
                 placeholder="Description of task"
                 value={taskEdit.description}
                 onChange={(e) =>
-                    setTaskEdit((prevTask) => ({
+                  setTaskEdit((prevTask) => ({
                     ...prevTask,
                     description: e.target.value,
                   }))
@@ -88,7 +106,7 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
                 type="date"
                 value={taskEdit.expiration}
                 onChange={(e) =>
-                    setTaskEdit((prevTask) => ({
+                  setTaskEdit((prevTask) => ({
                     ...prevTask,
                     expiration: e.target.value,
                   }))
@@ -103,7 +121,7 @@ export const EditTaskForm: React.FC<EditTaskProps> = ({ task }) => {
                 className="addTaskForm_priority"
                 value={taskEdit.priority}
                 onChange={(e) =>
-                    setTaskEdit((prevTask) => ({
+                  setTaskEdit((prevTask) => ({
                     ...prevTask,
                     priority: e.target.value,
                   }))
