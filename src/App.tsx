@@ -1,6 +1,6 @@
 
 import  AppRoutes  from "./routes";
-import  {Footer, Navbar}  from "./components";
+import  {Footer, Navbar}  from "./layout";
 
 
 if (!navigator.geolocation) {
@@ -10,7 +10,7 @@ if (!navigator.geolocation) {
 
 export const App:React.FC = () => {
   return (
-    <div className="App">
+    <div>
       <Navbar />
       <AppRoutes />
       <Footer />

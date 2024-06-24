@@ -1,0 +1,57 @@
+.time {
+  margin-bottom: 0.5rem;
+  .time-cloud {
+    width: 80px;
+    height: 40px;
+    background: #eceff1;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 70px;
+
+    .navbar-container_time-weater {
+      display: flex;
+      flex-direction: column;
+      text-align: end;
+      p {
+        font-size: xx-small;
+      }
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      position: relative;
+      display: inline-block;
+      background: inherit;
+      border-radius: inherit;
+    }
+
+    &::before {
+      width: 50px;
+      height: 50px;
+      top: -5px;
+      left: 40px;
+    }
+
+    animation: float 1.8s infinite alternate;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .time-shadow {
+    width: 150px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    border-radius: 50%;
+    filter: blur(7px);
+    animation: sha 1.8s infinite alternate;
+  }
+}

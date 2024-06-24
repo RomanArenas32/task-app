@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getUserLocation, openWeatherMap } from "../api/openWeatherMap";
-
+import { getUserLocation, openWeatherMap } from "../../api/openWeatherMap";
 interface DataTime {
   feels_like?: number;
   grnd_level?: number;
@@ -13,7 +11,7 @@ interface DataTime {
   temp_min?: number;
 }
 
-export const Navbar: React.FC = () => {
+export const Time = () => {
   const [latLon, setLatLong] = useState<[number, number]>([0, 0]);
   const [openWeaterData, setOpenWeaterData] = useState<DataTime>();
 
@@ -41,7 +39,6 @@ export const Navbar: React.FC = () => {
     getTime();
   }, [latLon]);
 
-
   const formatTemp = (temp: number | undefined) => {
     if (temp != undefined) {
       return (temp - 273.15).toFixed(1);
@@ -51,29 +48,15 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="navbar-container" >
-      <div className="navbar-container_time">
-        <h1>Tasker</h1>
+    <div className="time">
+      <div className="time-cloud">
         <div className="navbar-container_time-weater">
           <p>Max: {formatTemp(openWeaterData?.temp_max)}°C</p>
           <p>Min: {formatTemp(openWeaterData?.temp_min)}°C</p>
           <p>Hum: {openWeaterData?.humidity}%</p>
         </div>
       </div>
-      <nav>
-        <ul>
-          <Link to="/">
-            <li>Task gestor</li>
-          </Link>
-          <Link to="/guides">
-            <li>Guide</li>
-          </Link>
-          <Link to="/about">
-            <li>About it</li>
-          </Link>
-        </ul>
-      </nav>
+      <div className="time-shadow"></div>
     </div>
   );
 };
-

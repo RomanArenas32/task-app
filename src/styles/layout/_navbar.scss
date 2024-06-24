@@ -1,0 +1,40 @@
+.navbar-container {
+  .navbar-container_time {
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h1 {
+      text-decoration: underline;
+    }
+  }
+
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: xx-large;
+
+  nav {
+    font-size: medium;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+
+      li {
+        cursor: pointer;
+
+        &:hover {
+          color: yellow;
+        }
+      }
+    }
+  }
+}

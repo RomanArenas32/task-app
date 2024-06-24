@@ -12,10 +12,12 @@ $color4: #E3FEF7;
 @import './pages/components/comments';
 
 
+//layout
+@import './layout/navbar';
+@import './layout/footer';
+@import './layout/components/time';
 
-//components
-@import './components/navbar';
-@import './components/footer';
+//todo
 @import './todo/components/penddingTask';
 @import './todo/todoTask';
 @import './todo/components/taskList';
