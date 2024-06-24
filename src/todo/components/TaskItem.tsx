@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Task } from "../interfaces/interfaces";
 import { useTasks } from "../hooks/useTasks";
 import { Checkbox } from "@chakra-ui/react";
-import { EditTask } from "./EditTask";
-import { DeleteTask } from "./forms";
+import { DeleteTask, EditTaskForm } from "./forms";
 
 export interface Props {
   task: Task;
@@ -11,9 +10,8 @@ export interface Props {
 
 export const TaskItem: React.FC<Props> = ({ task }) => {
   const { toggleTask } = useTasks();
-
   const handleChangeCompleted = () => {
-    toggleTask(task.id); 
+    toggleTask(task.id);
   };
 
   return (
@@ -22,22 +20,24 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
         {task.completed ? (
           <span className="taskItem_task-content_completed">completed!</span>
         ) : (
-          <span>Task Title</span>
+          <span>{task.title}</span>
         )}
         <p>{task.description}</p>
+        <p>{task.priority}</p>
+        <p>Expired: {task.expiration}</p>
       </div>
       <div className="taskItem_task-content_buttons">
         <div>
-          <DeleteTask task={task}/>
-          <EditTask task={task} />
+          <DeleteTask task={task} />
+          <EditTaskForm task={task} />
         </div>
         <div className="taskItem_task-content_check">
-          <Checkbox isChecked={task.completed} onChange={handleChangeCompleted}>
-          </Checkbox>
+          <Checkbox
+            isChecked={task.completed}
+            onChange={handleChangeCompleted}
+          ></Checkbox>
         </div>
       </div>
     </div>
   );
 };
-
-
