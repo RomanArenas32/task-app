@@ -35,7 +35,7 @@ export const Comments = () => {
   }, []);
 
 
-  if (comments.length == 0) {
+  if (comments.length === 0) {
     return <div>cargando comentarios...</div>;
   } else {
     return (

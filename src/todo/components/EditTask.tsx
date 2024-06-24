@@ -9,7 +9,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useTasks } from "../hooks/useTasks";
@@ -27,7 +26,7 @@ export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
   const handleEditTask =  async(e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (newDescription.trim() == "") {
+    if (newDescription.trim() === "") {
       return alert("You must add the description");
     }
     if (newDescription.length <= 3) {

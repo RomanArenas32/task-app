@@ -40,7 +40,7 @@ export const Time = () => {
   }, [latLon]);
 
   const formatTemp = (temp: number | undefined) => {
-    if (temp != undefined) {
+    if (temp !== undefined) {
       return (temp - 273.15).toFixed(1);
     } else {
       return 0;

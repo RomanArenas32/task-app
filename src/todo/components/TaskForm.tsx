@@ -9,7 +9,7 @@ interface Task {
 }
 
 export const TaskForm: React.FC = () => {
-  const { addTask, tasks } = useTasks();
+  const { addTask } = useTasks();
 
   const generateUniqueId = (): string => {
     return `${new Date().getTime()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -24,7 +24,7 @@ export const TaskForm: React.FC = () => {
   const handleAddTask = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (task.description.trim() == "") {
+    if (task.description.trim() === "") {
       return alert("You must add the description");
     }
     if (task.description.length <= 3) {
