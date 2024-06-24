@@ -5,9 +5,12 @@
   justify-content: center;
   gap: 1rem;
   align-items: center;
+  background-color: $color3;
+  min-height: 50vh;
 
   .about_seccion {
     display: flex;
+    padding-top: 1rem;
     flex-direction: column;
     gap: 1rem;
     .about_tip {
