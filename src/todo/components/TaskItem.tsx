@@ -6,7 +6,7 @@ import { Checkbox } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { EditTask } from "./EditTask";
 
-interface Props {
+export interface Props {
   task: Task;
 }
 
@@ -46,4 +46,5 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
     </div>
   );
 };
+
 
