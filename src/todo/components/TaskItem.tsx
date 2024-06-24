@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Task } from "../interfaces/interfaces";
 import { useTasks } from "../hooks/useTasks";
-import { IconButton } from "@chakra-ui/react";
 import { Checkbox } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
 import { EditTask } from "./EditTask";
+import { DeleteTask } from "./forms";
 
 export interface Props {
   task: Task;
 }
 
 export const TaskItem: React.FC<Props> = ({ task }) => {
-  const { removeTask, toggleTask } = useTasks();
+  const { toggleTask } = useTasks();
 
   const handleChangeCompleted = () => {
-    toggleTask(task.id); // Toggle global task.completed state
+    toggleTask(task.id); 
   };
 
   return (
@@ -29,13 +28,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
       </div>
       <div className="taskItem_task-content_buttons">
         <div>
-          <IconButton
-            m={1}
-            color="red.700"
-            aria-label="Delete task"
-            icon={<DeleteIcon />}
-            onClick={() => removeTask(task.id)}
-          />
+          <DeleteTask task={task}/>
           <EditTask task={task} />
         </div>
         <div className="taskItem_task-content_check">

@@ -1,0 +1,25 @@
+.home{
+    background-color: $color4;
+    height: 55vh;
+    @include movil{
+        height: 48vh;
+    }
+    .home_panel{
+        display: flex;
+        flex-direction: row;
+        text-transform: uppercase;
+        font-weight: 800;
+        gap: 2rem;
+        padding-top: 1.5rem;
+        justify-content: center;
+        Button{
+            text-transform: uppercase;
+            min-width: 250px;
+            min-height: 75px;
+        }
+
+        @include movil{
+            flex-direction: column;
+        }
+    }
+}

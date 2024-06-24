@@ -26,7 +26,10 @@ export const Default = Template.bind({});
 Default.args = {
   task: {
     id: '1',
-    description: 'Example task',
+    title: "Tarea",
+    description: 'Tarea de ejemplo',
+    expiration: "2024-06-05",
+    priority: "higth",
     completed: false,
   },
 }

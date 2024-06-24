@@ -7,7 +7,10 @@ import { TaskProvider } from '../context/TaskProvider';
 
 const mockTask: Task = {
   id: '1',
+  title: "Task ",
   description: 'Test Task',
+  expiration: "2024-06-05",
+  priority: "medium",
   completed: false,
 };
 
