@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Time } from "./components";
 
 
 export const Navbar: React.FC = () => {
+
+  const navigate = useNavigate();
  
 
   return (
     <div className="navbar-container" >
       <div className="navbar-container_time">
-        <h1>Tasker</h1>
+        <h1 onClick={()=> navigate('../')}>Tasker</h1>
         <Time/>
       </div>
       <nav>

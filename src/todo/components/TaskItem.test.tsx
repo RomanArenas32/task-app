@@ -5,8 +5,11 @@ import { TaskProvider } from "../context/TaskProvider";
 import { Task } from "../interfaces/interfaces";
 
 const task: Task = {
-  id: "1",
-  description: "Test task",
+  id: '1',
+  title: "Task ",
+  description: 'Test Task',
+  expiration: "2024-06-05",
+  priority: "medium",
   completed: false,
 };
 

@@ -1,24 +1,40 @@
+// mixins
+@mixin movil {
+    @media (max-width: 420px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
 //global colors
 $color1 : #003C43;
 $color2: #135D66;
 $color3: #77B0AA;
 $color4: #E3FEF7;
 
-
-
 //pages
-@import './pages/about.scss';
-@import './pages/guide.scss';
+@import './pages/about';
+@import './pages/guide';
 @import './pages/components/comments';
+@import './pages/home';
 
 
 //layout
 @import './layout/navbar';
 @import './layout/footer';
 @import './layout/components/time';
+@import './layout/components/homeTitle';
 
 //todo
 @import './todo/components/penddingTask';
 @import './todo/todoTask';
 @import './todo/components/taskList';
 @import './todo/components/taskItem';
+@import './todo/components/addTaskForm';
+@import './todo/components/message/succes';
+@import './todo/components/message/deleteTask';

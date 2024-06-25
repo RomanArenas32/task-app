@@ -4,7 +4,7 @@ import { Time } from "./Time";
 
 
 export default {
-  title: "Components/Time",
+  title: "Layout/Components/Time",
   component: Time,
 } as Meta;
 

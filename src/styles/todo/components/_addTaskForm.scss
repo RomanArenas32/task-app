@@ -1,0 +1,40 @@
+.addTaskForm{
+    background-color: $color3;
+
+    .addTaskForm_header{
+        background-color: $color1;
+        color: $color4;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .addTaskForm_modal{
+        background-color: $color2;
+        color: $color4;
+        font-weight: bold;
+
+        
+
+    }
+    .addTaskForm_footer{
+        background-color: $color1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        height: 6rem;
+
+        Button{
+            width: 10rem;
+            height: 4rem;
+            color: white;
+        }
+    }
+}
+.addTaskForm_priority{
+
+    option{
+        font-weight: bold;
+        color: $color1;
+    }
+}

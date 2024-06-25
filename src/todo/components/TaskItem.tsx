@@ -1,20 +1,26 @@
 import React from "react";
 import { Task } from "../interfaces/interfaces";
 import { useTasks } from "../hooks/useTasks";
-import { IconButton } from "@chakra-ui/react";
 import { Checkbox } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
-import { EditTask } from "./EditTask";
+import { DeleteTask, EditTaskForm } from "./forms";
 
 export interface Props {
   task: Task;
 }
 
 export const TaskItem: React.FC<Props> = ({ task }) => {
-  const { removeTask, toggleTask } = useTasks();
 
+  const priorityStyles: { [key: string]: React.CSSProperties } = {
+    high: { background: "red", color: "white" },
+    medium: { background: "orange", color: "white" },
+    low: { background: "green", color: "white" },
+  };
+  const defaultStyle: React.CSSProperties = { background: "black", color: "white" };
+  const style = priorityStyles[task.priority] || defaultStyle;
+
+  const { toggleTask } = useTasks();
   const handleChangeCompleted = () => {
-    toggleTask(task.id); // Toggle global task.completed state
+    toggleTask(task.id);
   };
 
   return (
@@ -23,28 +29,24 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
         {task.completed ? (
           <span className="taskItem_task-content_completed">completed!</span>
         ) : (
-          <span>Task Title</span>
+          <span>{task.title}</span>
         )}
         <p>{task.description}</p>
+        <p style={style}>{task.priority} Priority.!</p>
+        <p>Expired: {task.expiration}</p>
       </div>
       <div className="taskItem_task-content_buttons">
         <div>
-          <IconButton
-            m={1}
-            color="red.700"
-            aria-label="Delete task"
-            icon={<DeleteIcon />}
-            onClick={() => removeTask(task.id)}
-          />
-          <EditTask task={task} />
+          <DeleteTask task={task} />
+          <EditTaskForm task={task} />
         </div>
         <div className="taskItem_task-content_check">
-          <Checkbox isChecked={task.completed} onChange={handleChangeCompleted}>
-          </Checkbox>
+          <Checkbox
+            isChecked={task.completed}
+            onChange={handleChangeCompleted}
+          ></Checkbox>
         </div>
       </div>
     </div>
   );
 };
-
-
