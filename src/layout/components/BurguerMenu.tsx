@@ -4,9 +4,16 @@ import { Links } from "./Links";
 export const BurguerMenu = () => {
   const [showMenu, setShowMenu] = useState<boolean>(true);
 
-  const handleShowMenu = () : void => {
+  const handleShowMenu = (): void => {
     setShowMenu(!showMenu);
   };
+
+  const closeMenu = (): void=>{
+    setTimeout(() => {
+          setShowMenu(!showMenu)
+    }, 300);
+  }
+
   return (
     <div>
       {showMenu ? (
@@ -36,7 +43,9 @@ export const BurguerMenu = () => {
               fill="#E3FEF7"
             />
           </svg>
-          <Links />
+          <div onClick={closeMenu}>
+            <Links />
+          </div>
         </div>
       )}
     </div>
