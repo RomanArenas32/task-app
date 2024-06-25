@@ -21,7 +21,7 @@ describe("TaskItem Component", () => {
       </TaskProvider>
     );
 
-    expect(screen.getByText(/Task Title/i)).toBeInTheDocument();
+    expect(screen.getByText(/Priority.!/i)).toBeInTheDocument();
 
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).toBeInTheDocument();
