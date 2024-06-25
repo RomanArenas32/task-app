@@ -1,8 +1,11 @@
 .home{
     background-color: $color4;
     height: 55vh;
+    display: grid;
+    place-items: center;
+    padding-bottom: 4rem;
     @include movil{
-        height: 48vh;
+        height: 60vh;
     }
     .home_panel{
         display: flex;

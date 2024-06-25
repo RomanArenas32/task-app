@@ -1,32 +1,18 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Time } from "./components";
-
+import { useNavigate } from "react-router-dom";
+import { BurguerMenu, Links } from "./components";
 
 export const Navbar: React.FC = () => {
-
   const navigate = useNavigate();
- 
 
   return (
-    <div className="navbar-container" >
-      <div className="navbar-container_time">
-        <h1 onClick={()=> navigate('../')}>Tasker</h1>
-        <Time/>
+    <nav className="navbar-container">
+      <h1 onClick={() => navigate("../")}>Tasker</h1>
+      <div className="navbar-container_links">
+        <Links />
       </div>
-      <nav>
-        <ul>
-          <Link to="/">
-            <li>Task gestor</li>
-          </Link>
-          <Link to="/guides">
-            <li>Guide</li>
-          </Link>
-          <Link to="/about">
-            <li>About it</li>
-          </Link>
-        </ul>
-      </nav>
-    </div>
+      <div className="navbar-container_burguer">
+        <BurguerMenu />
+      </div>
+    </nav>
   );
 };
-

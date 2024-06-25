@@ -1,0 +1,48 @@
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  li {
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+    color: $color4;
+    font-size: large;
+    &:hover {
+      color: yellow;
+    }
+  }
+
+  @include tablet {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 60vh;
+    flex-direction: column;
+    background-color: $color1;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18vh;
+    gap: 4rem;
+    animation: slideDown 0.5s ease-in-out;
+
+    li{
+        font-size: 2rem;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
