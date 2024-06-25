@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const Links = () => {
   return (
-    <ul>
+    <ul className="link_ul">
       <Link to="/">
         <li>Task gestor</li>
       </Link>
